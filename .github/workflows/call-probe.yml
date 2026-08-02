@@ -1,0 +1,6 @@
+name: call-private-probe
+on:
+  workflow_dispatch: {}
+jobs:
+  call:
+    uses: achimdehnert/ci-sichtbarkeit-probe/.github/workflows/_probe.yml@main
