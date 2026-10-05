@@ -1,0 +1,16 @@
+name: g2
+on:
+  workflow_dispatch:
+jobs:
+  reusable:
+    uses: achimdehnert/transfer-probe-g2/.github/workflows/_probe.yml@main
+  composite_raw_klon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: achimdehnert/transfer-probe-g2/.github/actions/hallo@main
+      - name: raw
+        if: always()
+        run: curl -fsSL https://raw.githubusercontent.com/achimdehnert/transfer-probe-g2/main/README.md | head -1
+      - name: klon
+        if: always()
+        run: git clone -q https://github.com/achimdehnert/transfer-probe-g2 /tmp/k && ls /tmp/k
